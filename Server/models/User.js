@@ -26,9 +26,8 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  goals: {
-    type: [String], 
-    enum: ['Weight Loss', 'Muscle Gain', 'Endurance', 'Flexibility'],
+  Type: {
+    type: String, 
     required: true
   },
   gender: {
@@ -36,13 +35,13 @@ const UserSchema = new mongoose.Schema({
     enum: ['Male', 'Female', 'Other'],
     required: true
   },
-  fitnessLevel: {
+  Level: {
     type: String,
     enum: ['Beginner', 'Intermediate', 'Advanced'],
     required: true
   },
-  availableEquipment: {
-    type: [String], 
+  Equipment: {
+    type: String, 
     default: []
   },
   workoutPreference: {
