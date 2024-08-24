@@ -1,0 +1,159 @@
+.plans-container {
+    width: 100%;
+    padding: 6rem 0;
+    gap: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url("../assets/Frame11.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.plans-main {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.heading {
+    color: white;
+    font-size: 2.5vw;
+    text-align: center;
+}
+
+.plan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 25px #111111;
+    height: 350px;
+    width: 90%;
+    max-width: 300px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.plan-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.plan-gain{
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    justify-content: center;
+    align-items: center;
+}
+h4 {
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+button {
+    color: white;
+    background-color: #111111;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.probutton:hover{
+    transform: scale(1.1);
+    border: none;
+}
+button:hover{
+    color: #111111;
+    background-color: #fff;
+    border: 2px solid #111;
+}
+.procontent {
+    background: linear-gradient(to right, #50276a, #C14D93, #F2C22A);
+    color: white;
+}
+
+.procontent button {
+    background-color: white;
+    color: #111111;
+    font-weight: 900;
+}
+.heading{
+    font-size: 2rem;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablet View */
+@media (max-width: 768px) {
+    .plans-container {
+        height: auto;
+        gap: 3rem;
+        padding: 2rem;
+    }
+
+    .plans-main {
+        gap: 3rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+    .plans-container {
+        height: auto;
+        padding: 2rem 1rem;
+    }
+
+    .heading {
+        font-size: 6vw;
+    }
+
+    .plans-main {
+        gap: 2rem;
+    }
+
+    .plan {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}

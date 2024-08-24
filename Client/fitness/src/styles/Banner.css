@@ -1,0 +1,34 @@
+#page2{
+    height: auto;
+    width: 100%;
+    padding: 10vw 0vw;
+    overflow: hidden;
+}
+
+#move{
+    background-color: #D9FF06;
+    display: flex;
+    padding: 3vw 0vw;
+    overflow: hidden;
+    width: calc(100% * 2);  
+}
+#move:hover{
+    cursor: url("../assets/heroimg.png"),auto;
+}
+
+.marque{
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    padding: 0 1.5vw;
+    flex-shrink: 0;
+    overflow: hidden;
+    transform: translateX(-100%);
+    will-change: transform;
+}
+.marque h1{
+    font-size: 4vw;
+}
+.marque img{ 
+    height: 4vw;
+}

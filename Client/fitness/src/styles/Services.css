@@ -1,0 +1,150 @@
+/* .service-container{
+    width: 100%;
+    height: 600px;
+    background: url("../assets/Frame12.png");
+    overflow: hidden;
+}
+.service-main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+}
+.service-heading h1{
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.service-content{
+    width: 100%;
+    height: 400px;
+    background-color: aquamarine;
+    display: flex;
+} */
+.service-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 100%;
+    background: url("../assets//Frame12.png") ;
+  }
+  
+  .service-main {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .service-heading h1 {
+    margin-bottom: 60px;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  
+  .service-content {
+    position: relative;
+    width: 90vw;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .service-content .service {
+    width: 25%;
+    height: 100%;
+    background-color: #333;
+    transition: all 1s ease-in-out;
+    transform: skewX(-5deg);
+  }
+  
+  .service-content .service:nth-child(1) {
+    background-color: #be74db;
+    transition: all 1s ease-in-out;
+    z-index: 4;
+    
+  }
+  
+  .service-content .service:nth-child(2) {
+    background-color: #fffc39;
+    transition: all 1s ease-in-out;
+    z-index: 3;
+  }
+  
+  .service-content .service:nth-child(3) {
+    background-color: #F76394;
+    transition: all 1s ease-in-out;
+    z-index: 2;
+  }
+  
+  .service-content .service:nth-child(4) {
+    background-color: #EC5F35;
+    transition: all 1s ease-in-out;
+    z-index: 1;
+  }
+  
+  .service-content .service:hover {
+    width: 45%;
+    transition: all 1s ease-in-out;
+    z-index: 5;
+    box-shadow:4px 4px 10px rgba(255, 255, 255, 0.562);
+  }
+  
+  .service-content:hover .service:not(:hover) {
+    width: calc(55%/3);
+    transition: all 1s ease-in-out;
+
+  }
+  .service{
+    overflow: hidden;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .service h1{
+    width: 250%;
+    font-size: 150%;
+    text-align: start;
+    color: White;
+    font-weight: 900;
+    text-shadow: 4px 4px 10px #0a0a0a;
+    text-transform: uppercase;
+    font-stretch: expanded;
+  }
+  .service:hover{
+    font-size: 250%;
+  }
+  .one:hover{
+    background: url("https://img.freepik.com/premium-photo/fitness-exercise-happy-couple-out-running-jogging-forest-trail-park-outdoors-sporty-smiling-man-woman-staying-active-fit-while-exercising-bonding-workout_590464-77228.jpg?w=740");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .two:hover{
+    background: url("https://cdn10.phillymag.com/wp-content/uploads/sites/3/2020/04/at-home-workout-getty-main.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .three:hover{
+    background: url("https://www.stockvault.net/data/2016/05/09/196879/preview16.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .four:hover{
+    background: url("https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/06/keto-atkins-still-life-salmon-healthy-1296x728-header.jpg?w=1155&h=1528");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }

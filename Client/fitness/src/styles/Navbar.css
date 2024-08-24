@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.nav-container {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: fixed;
+    background-color: #030303;
+    z-index: 999999;
+}
+
+.nav-main {
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: hidden;
+}
+.nav-main h1{
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+.nav-content {
+    display: flex;
+    gap: 4vw;
+    align-items: center;
+    z-index: 999;
+    /* font-size: 1rem; */
+}
+.nav-content h4{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.nav-main button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-weight: 800;
+    background-color: #7130c7;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-main button:hover{
+    background-color: #6f00ff;
+    color: white;
+    border: none;
+}
+
+.nav-main i {
+    font-size: 5vw;
+    cursor: pointer;
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 40px;
+}
+.menu-content h4{
+    cursor: pointer;     
+}
+.nav-main i{
+    display: none;
+    z-index: 9999;
+}
+.collapsible-menu{
+    display: none;
+}
+@media (max-width: 760px) {
+    .nav-content {
+        display: none;
+    }
+    .nav-main i {
+        display: block;
+    }
+    .collapsible-menu {
+        position: absolute;
+        background-color: #030303;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .collapsible-menu h4:hover{
+        text-transform: uppercase;
+    }
+    .collapsible-menu button {
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 999px;
+        font-weight: 800;
+        background-color: #7130c7;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .collapsible-menu button:hover{
+        background-color: #6a03f1;
+        color: white;
+    }
+}
