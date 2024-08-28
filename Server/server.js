@@ -41,6 +41,7 @@ app.get('/nutritional-guidance', nutritionalGuidanceController.getAllNutritional
 app.get('/nutritional-guidance/:id', nutritionalGuidanceController.getNutritionalGuidanceById);
 app.post('/nutritional-guidance/:id', nutritionalGuidanceController.updateNutritionalGuidance);
 app.post('/nutritional-guidance/:id', nutritionalGuidanceController.deleteNutritionalGuidance);
+app.get('/users/:userId/nutrition', nutritionalGuidanceController.getNutritionForUser); 
 
 // Progress Tracking routes
 app.post('/progress-tracking', progressTrackingController.createProgressTracking);

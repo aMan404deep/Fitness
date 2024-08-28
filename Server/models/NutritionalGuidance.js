@@ -1,26 +1,38 @@
 const mongoose = require('mongoose');
 
-const NutritionalGuidanceSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+const NutritionGuidanceSchema = new mongoose.Schema({
+  food_items: {
+    type: String,
     required: true
   },
-  dietPlan: {
-    type: String, 
-    required: true
-  },
-  dailyCalories: {
+  calories: {
     type: Number,
     required: true
   },
-  mealFrequency: {
-    type: Number, 
+  protein: {
+    type: Number,
     required: true
   },
-  dietaryRestrictions: {
-    type: [String] 
+  fat: {
+    type: Number,
+    required: true
+  },
+  carbs: {
+    type: Number,
+    required: true
+  },
+  height: {
+    type: Number,
+    required: true
+  },
+  weight: {
+    type: Number,
+    required: true
+  },
+  Type: {
+    type: String, 
+    required: true
   }
-});
+}, { collection: 'nutritionalguidances' });
 
-module.exports = mongoose.model('NutritionalGuidance', NutritionalGuidanceSchema);
+module.exports = mongoose.model('NutritionGuidance', NutritionGuidanceSchema);
