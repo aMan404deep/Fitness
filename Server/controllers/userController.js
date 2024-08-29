@@ -1,15 +1,56 @@
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const secret = 'shred103web'; // Replace with your secret key
 
+// Register User
 exports.createUser = async (req, res) => {
+  // try {
+  //   const user = new User(req.body);
+  //   await user.save();
+  //   res.status(201).json(user);
+  // } catch (err) {
+  //   res.status(400).json({ error: err.message });
+  // }
   try {
     const user = new User(req.body);
     await user.save();
-    res.status(201).json(user);
+    const token = jwt.sign({ userId: user._id }, secret, { expiresIn: '24h' });
+    res.status(201).json({ token });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
 
+// Login User
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ error: 'User not found' });
+
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
+
+    const token = jwt.sign({ userId: user._id }, secret, { expiresIn: '1h' });
+    res.status(200).json({ token });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Middleware to protect routes
+exports.authenticate = (req, res, next) => {
+  const token = req.header('Authorization').replace('Bearer ', '');
+  if (!token) return res.status(401).json({ error: 'Access denied' });
+
+  try {
+    const decoded = jwt.verify(token, secret);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    res.status(400).json({ error: 'Invalid token' });
+  }
+};
 
 exports.getAllUsers = async (req, res) => {
   try {

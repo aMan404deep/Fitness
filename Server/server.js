@@ -13,6 +13,7 @@ dbConnect();
 
 app.use(express.json());
 
+app.post('/login', userController.login);
 // User routes
 app.post('/users', userController.createUser);
 app.get('/users', userController.getAllUsers);
