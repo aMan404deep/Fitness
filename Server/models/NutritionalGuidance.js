@@ -1,7 +1,27 @@
 const mongoose = require('mongoose');
 
 const NutritionGuidanceSchema = new mongoose.Schema({
-  food_items: {
+  breakfast: {
+    type: String,
+    required: true
+  },
+  lunch: {
+    type: String,
+    required: true
+  },
+  dinner: {
+    type: String,
+    required: true
+  },
+  breakfast_recipe: {
+    type: String,
+    required: true
+  },
+  lunch_recipe: {
+    type: String,
+    required: true
+  },
+  dinner_recipe: {
     type: String,
     required: true
   },
@@ -33,6 +53,7 @@ const NutritionGuidanceSchema = new mongoose.Schema({
     type: String, 
     required: true
   }
+
 }, { collection: 'nutritionalguidances' });
 
 module.exports = mongoose.model('NutritionGuidance', NutritionGuidanceSchema);
