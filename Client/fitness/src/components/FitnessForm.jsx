@@ -120,6 +120,7 @@ const FitnessForm = () => {
               required
             >
               <option value="">Select</option>
+              <option value="strength">Strength</option>
               <option value="weightLoss">Weight Loss</option>
               <option value="muscleGain">Muscle Gain</option>
               <option value="endurance">Endurance</option>
@@ -138,13 +139,25 @@ const FitnessForm = () => {
           <h2>Workout Preferences</h2>
           <div className="form-group">
             <label>Available Equipment:</label>
-            <input
+            {/* <input
               type="text"
               name="availableEquipment"
               value={formData.availableEquipment}
               onChange={handleChange}
               required
-            />
+            /> */}
+            <select
+              name="availableEquipment"
+              value={formData.availableEquipment}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select</option>
+              <option value="Barbell">Barbell</option>
+              <option value="Bands">Bands</option>
+              <option value="Dumbbell">Dumbbell</option>
+              <option value="none">none</option>
+            </select>
           </div>
           <div className="form-group">
             <label>Workout Preference:</label>
