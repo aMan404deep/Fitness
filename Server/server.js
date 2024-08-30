@@ -13,43 +13,43 @@ dbConnect();
 
 app.use(express.json());
 
-app.post('/login', userController.login);
+app.post('/api/login', userController.login);
 // User routes
-app.post('/users', userController.createUser);
-app.get('/users', userController.getAllUsers);
-app.get('/users/:id', userController.getUserById);
-app.post('/users/:id', userController.updateUser);
-app.post('/users/:id', userController.deleteUser);
+app.post('/api/users', userController.createUser);
+app.get('/api/users', userController.getAllUsers);
+app.get('/api/users/:id', userController.getUserById);
+app.post('/api/users/:id', userController.updateUser);
+app.post('/api/users/:id', userController.deleteUser);
 
 // Exercise routes
-app.post('/exercises', exerciseController.createExercise);
-app.get('/exercises', exerciseController.getAllExercises);
-app.get('/exercises/:id', exerciseController.getExerciseById);
-app.post('/exercises/:id', exerciseController.updateExercise);
-app.post('/exercises/:id', exerciseController.deleteExercise);
-app.get('/users/:userId/exercises', exerciseController.getExercisesForUser);  // New route
+app.post('/api/exercises', exerciseController.createExercise);
+app.get('/api/exercises', exerciseController.getAllExercises);
+app.get('/api/exercises/:id', exerciseController.getExerciseById);
+app.post('/api/exercises/:id', exerciseController.updateExercise);
+app.post('/api/exercises/:id', exerciseController.deleteExercise);
+app.get('/api/users/:userId/exercises', exerciseController.getExercisesForUser);  // New route
 
 // Workout Plan routes
-app.post('/workout-plans', workoutPlanController.createWorkoutPlan);
-app.get('/workout-plans', workoutPlanController.getAllWorkoutPlans);
-app.get('/workout-plans/:id', workoutPlanController.getWorkoutPlanById);
-app.post('/workout-plans/:id', workoutPlanController.updateWorkoutPlan);
-app.post('/workout-plans/:id', workoutPlanController.deleteWorkoutPlan);
+app.post('/api/workout-plans', workoutPlanController.createWorkoutPlan);
+app.get('/api/workout-plans', workoutPlanController.getAllWorkoutPlans);
+app.get('/api/workout-plans/:id', workoutPlanController.getWorkoutPlanById);
+app.post('/api/workout-plans/:id', workoutPlanController.updateWorkoutPlan);
+app.post('/api/workout-plans/:id', workoutPlanController.deleteWorkoutPlan);
 
 // Nutritional Guidance routes
-app.post('/nutritional-guidance', nutritionalGuidanceController.createNutritionalGuidance);
-app.get('/nutritional-guidance', nutritionalGuidanceController.getAllNutritionalGuidance);
-app.get('/nutritional-guidance/:id', nutritionalGuidanceController.getNutritionalGuidanceById);
-app.post('/nutritional-guidance/:id', nutritionalGuidanceController.updateNutritionalGuidance);
-app.post('/nutritional-guidance/:id', nutritionalGuidanceController.deleteNutritionalGuidance);
-app.get('/users/:userId/nutrition', nutritionalGuidanceController.getNutritionForUser); 
+app.post('/api/nutritional-guidance', nutritionalGuidanceController.createNutritionalGuidance);
+app.get('/api/nutritional-guidance', nutritionalGuidanceController.getAllNutritionalGuidance);
+app.get('/api/nutritional-guidance/:id', nutritionalGuidanceController.getNutritionalGuidanceById);
+app.post('/api/nutritional-guidance/:id', nutritionalGuidanceController.updateNutritionalGuidance);
+app.post('/api/nutritional-guidance/:id', nutritionalGuidanceController.deleteNutritionalGuidance);
+app.get('/api/users/:userId/nutrition', nutritionalGuidanceController.getNutritionForUser); 
 
 // Progress Tracking routes
-app.post('/progress-tracking', progressTrackingController.createProgressTracking);
-app.get('/progress-tracking', progressTrackingController.getAllProgressTracking);
-app.get('/progress-tracking/:id', progressTrackingController.getProgressTrackingById);
-app.post('/progress-tracking/:id', progressTrackingController.updateProgressTracking);
-app.post('/progress-tracking/:id', progressTrackingController.deleteProgressTracking);
+app.post('/api/progress-tracking', progressTrackingController.createProgressTracking);
+app.get('/api/progress-tracking', progressTrackingController.getAllProgressTracking);
+app.get('/api/progress-tracking/:id', progressTrackingController.getProgressTrackingById);
+app.post('/api/progress-tracking/:id', progressTrackingController.updateProgressTracking);
+app.post('/api/progress-tracking/:id', progressTrackingController.deleteProgressTracking);
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
