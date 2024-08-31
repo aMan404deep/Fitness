@@ -27,6 +27,9 @@ const UserSchema = new mongoose.Schema({
   Type: {
     type: String 
   },
+  goals:{
+    type: String,
+  },
   gender: {
     type: String,
     enum: ['Male', 'Female', 'Other']

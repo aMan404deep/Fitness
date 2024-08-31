@@ -72,9 +72,9 @@ exports.createWorkoutPlan = async (req, res) => {
     }
     // Calculate total months and workout days in the plan
     let totalWeeks = 12; // Assuming a 3-month plan
-    if(user.Level === 'Beginner'){
+    if(user.Level === 'beginner'){
       totalWeeks = 24;
-    }else if(user.Level === 'Intermediate'){
+    }else if(user.Level === 'intermediate'){
       totalWeeks = 16;
     }else{
       totalWeeks = 12;

@@ -9,9 +9,9 @@ const FitnessForm = () => {
     gender: '',
     height: '',
     weight: '',
-    fitnessLevel: '',
+    Level: '',
     goals: '',
-    availableEquipment: '',
+    Equipment: '',
     workoutPreference: '',
     timePerWorkout: '',
     workoutFrequencyPerWeek: ''
@@ -32,9 +32,9 @@ const FitnessForm = () => {
   const handleNextStep = () => {
     if (step === 1 && formData.age && formData.gender && formData.height && formData.weight) {
       setStep(2);
-    } else if (step === 2 && formData.fitnessLevel && formData.goals) {
+    } else if (step === 2 && formData.Level && formData.goals) {
       setStep(3);
-    } else if (step === 3 && formData.availableEquipment && formData.workoutPreference && formData.timePerWorkout && formData.workoutFrequencyPerWeek) {
+    } else if (step === 3 && formData.Equipment && formData.workoutPreference && formData.timePerWorkout && formData.workoutFrequencyPerWeek) {
       // Submit the form data
       handleSubmit();
     }
@@ -120,8 +120,8 @@ const FitnessForm = () => {
           <div className="form-group">
             <label>Fitness Level:</label>
             <select
-              name="fitnessLevel"
-              value={formData.fitnessLevel}
+              name="Level"
+              value={formData.Level}
               onChange={handleChange}
               required
             >
@@ -158,8 +158,8 @@ const FitnessForm = () => {
           <div className="form-group">
             <label>Available Equipment:</label>
             <select
-              name="availableEquipment"
-              value={formData.availableEquipment}
+              name="Equipment"
+              value={formData.Equipment}
               onChange={handleChange}
               required
             >
