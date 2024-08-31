@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Register = () => {
       return;
     }
 
-    localStorage.setItem('user', JSON.stringify({ email, password }));
+    localStorage.setItem('user', JSON.stringify({ email, password ,name}));
 
     navigate('/login');
   };
@@ -26,6 +27,15 @@ const Register = () => {
         <div className="form-box">
           <h2>Register</h2>
           <form onSubmit={handleRegister}>
+          <div className="form-group">
+              <label>Name:</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
             <div className="form-group">
               <label>Email:</label>
               <input
