@@ -8,6 +8,10 @@ const nutritionalGuidanceController = require('./controllers/nutritionalGuidance
 const progressTrackingController = require('./controllers/progressTrackingController');
 
 const app = express();
+const cors = require('cors');
+
+// Use CORS middleware
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 dbConnect();
 

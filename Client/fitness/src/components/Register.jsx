@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import '../styles/Register.css';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -7,18 +8,29 @@ const Register = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      document.querySelector('.error-message').textContent = 'Passwords do not match!';
+      setErrorMessage('Passwords do not match!');
       return;
     }
 
-    localStorage.setItem('user', JSON.stringify({ email, password ,name}));
-
-    navigate('/login');
+    try {
+      const response = await axios.post('http://localhost:5000/api/users', {
+        name,
+        email,
+        password
+      });
+      if (response.status === 201) {
+        // Navigate to the next step or login page
+        navigate('/login');
+      }
+    } catch (error) {
+      setErrorMessage(error.response?.data?.error || 'Registration failed');
+    }
   };
 
   return (
@@ -27,7 +39,7 @@ const Register = () => {
         <div className="form-box">
           <h2>Register</h2>
           <form onSubmit={handleRegister}>
-          <div className="form-group">
+            <div className="form-group">
               <label>Name:</label>
               <input
                 type="text"
@@ -64,7 +76,7 @@ const Register = () => {
               />
             </div>
             <button type="submit" className="register-button">Register</button>
-            <div className="error-message"></div>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
           </form>
           <p className="bottom-text">
             Already have an account? <Link to="/login">Login</Link>.

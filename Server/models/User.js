@@ -16,47 +16,37 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   age: {
-    type: Number,
-    required: true
+    type: Number
   },
   height: {
-    type: Number,
-    required: true
+    type: Number
   },
   weight: {
-    type: Number,
-    required: true
+    type: Number
   },
   Type: {
-    type: String, 
-    required: true
+    type: String 
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female', 'Other'],
-    required: true
+    enum: ['Male', 'Female', 'Other']
   },
   Level: {
     type: String,
-    enum: ['Beginner', 'Intermediate', 'Advanced'],
-    required: true
+    enum: ['Beginner', 'Intermediate', 'Advanced']
   },
   Equipment: {
-    type: String, 
-    default: []
+    type: String
   },
   workoutPreference: {
     type: String,
-    enum: ['Home', 'Gym', 'Outdoor'],
-    required: true
+    enum: ['Home', 'Gym', 'Outdoor']
   },
   timePerWorkout: {
-    type: Number, // in minutes
-    required: true
+    type: Number // in minutes
   },
   workoutFrequencyPerWeek: {
-    type: Number, // Number of workouts per week
-    required: true
+    type: Number // Number of workouts per week
   }
 });
 
