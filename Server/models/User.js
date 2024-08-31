@@ -43,7 +43,7 @@ const UserSchema = new mongoose.Schema({
     enum: ['Home', 'Gym', 'Outdoor']
   },
   timePerWorkout: {
-    type: Number // in minutes
+    type: String // in minutes
   },
   workoutFrequencyPerWeek: {
     type: Number // Number of workouts per week

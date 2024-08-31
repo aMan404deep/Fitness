@@ -23,7 +23,7 @@ app.post('/api/users', userController.createUser);
 app.get('/api/users', userController.getAllUsers);
 app.get('/api/users/:id', userController.getUserById);
 app.post('/api/users/:id', userController.updateUser);
-app.post('/api/users/:id', userController.deleteUser);
+app.post('/api/delete/users/:id', userController.deleteUser);
 
 // Exercise routes
 app.post('/api/exercises', exerciseController.createExercise);

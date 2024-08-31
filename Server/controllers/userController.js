@@ -4,13 +4,6 @@ const secret = 'shred103web'; // Replace with your secret key
 
 // Register User
 exports.createUser = async (req, res) => {
-  // try {
-  //   const user = new User(req.body);
-  //   await user.save();
-  //   res.status(201).json(user);
-  // } catch (err) {
-  //   res.status(400).json({ error: err.message });
-  // }
   try {
     const user = new User(req.body);
     await user.save();
@@ -32,7 +25,7 @@ exports.login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
 
     const token = jwt.sign({ userId: user._id }, secret, { expiresIn: '1h' });
-    res.status(200).json({ token });
+    res.status(200).json({ token ,userId: user._id });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -76,10 +69,9 @@ exports.updateUser = async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
-      { $set: req.body },
-      { new: true, runValidators: true }
+      req.body
     );
-
+    console.log(req.params.id ," jaksbddk" ,req.body)
     if (!updatedUser) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -89,7 +81,6 @@ exports.updateUser = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
 
 exports.deleteUser = async (req, res) => {
   try {

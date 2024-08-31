@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../styles/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -8,16 +9,27 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    const user = JSON.parse(localStorage.getItem('user'));
+    try {
+      // Make the API call
+      const response = await axios.post('http://localhost:5000/api/login', {
+        email,
+        password
+      });
 
-    if (user && user.email === email && user.password === password) {
+      // Assuming the API returns a token
+      const { token,userId  } = response.data;
+
+      // Store the token in local storage
+      localStorage.setItem('token', token);
+      localStorage.setItem('userId', userId);
+
       // Navigate to the form component upon successful login
       navigate('/form');
-    } else {
-      setError('Invalid email or password!');
+    } catch (error) {
+      setError(error.response?.data?.error || 'Login failed');
     }
   };
 

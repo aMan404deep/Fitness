@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import '../styles/FitnessForm.css'; 
+import axios from 'axios'; // Import axios for making HTTP requests
+import '../styles/FitnessForm.css';
 
 const FitnessForm = () => {
   const [step, setStep] = useState(1);
@@ -15,6 +16,10 @@ const FitnessForm = () => {
     timePerWorkout: '',
     workoutFrequencyPerWeek: ''
   });
+  const [error, setError] = useState('');
+
+  // Retrieve userId from localStorage
+  const userId = localStorage.getItem('userId');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,8 +35,23 @@ const FitnessForm = () => {
     } else if (step === 2 && formData.fitnessLevel && formData.goals) {
       setStep(3);
     } else if (step === 3 && formData.availableEquipment && formData.workoutPreference && formData.timePerWorkout && formData.workoutFrequencyPerWeek) {
-      console.log('Form data submitted:', formData);
-      
+      // Submit the form data
+      handleSubmit();
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      // Make the API call to update user data
+      console.log(formData)
+      const response = await axios.post(`http://localhost:5000/api/users/${userId}`, formData);
+
+      if (response.status === 200) {
+        // Handle success, e.g., navigate or show a success message
+        console.log('Form data successfully submitted:', response.data);
+      }
+    } catch (error) {
+      setError(error.response?.data?.error || 'Failed to submit form data');
     }
   };
 
@@ -126,8 +146,8 @@ const FitnessForm = () => {
             </select>
           </div>
           <div className='btn-div-form'>
-          <button className='formBtn' onClick={() => setStep(1)}>Back</button>
-          <button className='formBtn' onClick={handleNextStep}>Submit</button>
+            <button className='formBtn' onClick={() => setStep(1)}>Back</button>
+            <button className='formBtn' onClick={handleNextStep}>Next</button>
           </div>
         </div>
       )}
@@ -137,13 +157,6 @@ const FitnessForm = () => {
           <h2>Workout Preferences</h2>
           <div className="form-group">
             <label>Available Equipment:</label>
-            {/* <input
-              type="text"
-              name="availableEquipment"
-              value={formData.availableEquipment}
-              onChange={handleChange}
-              required
-            /> */}
             <select
               name="availableEquipment"
               value={formData.availableEquipment}
@@ -192,8 +205,8 @@ const FitnessForm = () => {
             />
           </div>
           <div className='btn-div-form'>
-          <button className='formBtn' onClick={() => setStep(2)}>Back</button>
-          <button className='formBtn' onClick={handleNextStep}>Submit</button>
+            <button className='formBtn' onClick={() => setStep(2)}>Back</button>
+            <button className='formBtn' onClick={handleSubmit}>Submit</button>
           </div>
         </div>
       )}
