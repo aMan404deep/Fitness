@@ -123,8 +123,6 @@ const FitnessForm = () => {
               <option value="strength">Strength</option>
               <option value="weightLoss">Weight Loss</option>
               <option value="muscleGain">Muscle Gain</option>
-              <option value="endurance">Endurance</option>
-              <option value="flexibility">Flexibility</option>
             </select>
           </div>
           <div className='btn-div-form'>
