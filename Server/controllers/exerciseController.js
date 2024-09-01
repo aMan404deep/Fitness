@@ -67,9 +67,9 @@ exports.getExercisesForUser = async (req, res) => {
 
     const query = {
       $and: [
-        { Type: user.Type }, // Match Type with user's goals
-        { Level: user.Level }, // Match Level with user's fitness level
-        { Equipment: user.Equipment  } // Match Equipment
+        { Goal: user.goal }, // Match Type with user's goals
+        // { Level: user.Level }, 
+        { Equipment: user.Equipment  } 
       ]
     };
 

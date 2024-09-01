@@ -63,7 +63,7 @@ exports.getNutritionForUser = async (req, res) => {
       $and: [
         { height: user.height }, 
         { weight: user.weight }, 
-        { Type: user.Type  } 
+        // { Type: user.Type  } 
       ]
     };
 

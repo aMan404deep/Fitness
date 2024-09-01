@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios'; // Import axios for making HTTP requests
+import { useNavigate } from 'react-router-dom';
 import '../styles/FitnessForm.css';
 
 const FitnessForm = () => {
@@ -20,7 +21,7 @@ const FitnessForm = () => {
 
   // Retrieve userId from localStorage
   const userId = localStorage.getItem('userId');
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -49,6 +50,7 @@ const FitnessForm = () => {
       if (response.status === 200) {
         // Handle success, e.g., navigate or show a success message
         console.log('Form data successfully submitted:', response.data);
+        navigate('/homepage');
       }
     } catch (error) {
       setError(error.response?.data?.error || 'Failed to submit form data');

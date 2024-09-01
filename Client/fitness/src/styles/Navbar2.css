@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #010202;
+    color: #fff;
+    height: 60px;
+    position: fixed;
+    width: 100vw;
+    z-index: 9999;
+    font-family: 'Roboto', sans-serif;
+}
+
+.brand {
+    margin: 0;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+.nav-menu button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-weight: 800;
+    background-color: #7130c7;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-main button:hover {
+    background-color: #6f00ff;
+    color: white;
+    border: none;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none; /* Hide hamburger menu by default */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-menu.active {
+    display: flex; /* Show menu items when hamburger is clicked */
+}
+
+.link {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+/* Media Queries */
+
+/* For screens 768px and below (e.g., tablets) */
+@media (max-width: 768px) {
+    .right {
+        display: none; /* Hide right items by default on small screens */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger menu on small screens */
+    }
+
+    .nav-menu {
+        display: none; /* Hide menu items by default */
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #010202;
+        padding: 10px;
+        border-radius: 5px;
+        flex-direction: column;
+        gap: 10px;
+        width: 200px;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        display: flex; /* Show menu items when hamburger is clicked */
+    }
+}
+
+/* For screens 480px and below (e.g., mobile phones) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 5px;
+    }
+
+    .brand {
+        font-size: 1.2rem; /* Adjust font size */
+    }
+
+    .link {
+        font-size: 0.9rem; /* Adjust font size */
+        padding: 8px;
+    }
+
+    .nav-main button {
+        padding: 8px 15px; /* Adjust button padding */
+    }
+}
+
+/* For very small screens (e.g., less than 320px) */
+@media (max-width: 320px) {
+    .navbar {
+        padding: 10px 3px;
+    }
+
+    .brand {
+        font-size: 0.8rem; /* Smaller font size */
+    }
+
+    .link {
+        font-size: 0.8rem; /* Smaller font size */
+        padding: 6px;
+    }
+
+    .nav-main button {
+        padding: 6px 10px; /* Adjust button padding */
+    }
+}

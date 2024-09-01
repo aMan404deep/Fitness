@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Navbar2 from './components/Navbar2'; // Import Navbar2
 import Hero from './components/Hero';
 import { useState, useEffect, useRef } from 'react';
 import Plans from './components/Plans';
@@ -13,6 +14,10 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Loader from './components/Loader';
 import FitnessForm from './components/FitnessForm';
+import HomePage from './components/HomePage';
+import Nutrition from './components/Nutrition';
+import Exercise from './components/Exercise';
+import CommunityPage from './components/CommunityPage';
 
 const App = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
@@ -67,12 +72,19 @@ const App = () => {
           <Loader onComplete={handleLoaderComplete} />
         ) : (
           <>
-            <Navbar scrollTo={scrollToSection} />
             <Routes>
+              {/* Routes that use Navbar2 */}
+              <Route path="/homepage" element={<><Navbar2 /><HomePage /></>} />
+              <Route path="/nutrition" element={<><Navbar2 /><Nutrition /></>} />
+              <Route path="/exercise" element={<><Navbar2 /><Exercise /></>} />
+              <Route path="/community" element={<><Navbar2 /><CommunityPage /></>} />
+
+              {/* Routes that use the original Navbar */}
               <Route
                 path="/"
                 element={
                   <>
+                    <Navbar scrollTo={scrollToSection} />
                     <Hero />
                     <div ref={servicesRef}><Services /></div>
                     <div ref={plansRef}><Plans /></div>

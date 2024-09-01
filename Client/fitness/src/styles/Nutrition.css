@@ -1,0 +1,100 @@
+/* Ensure the container takes the full width of the viewport */
+.nutrition-container {
+  padding: 20px;
+  width: 100vw;
+  padding-top: 80px;
+  font-family: Arial, sans-serif;
+  min-height: 100vh; /* Ensure it covers full height */
+  background-color: #010202;
+  margin: 0; /* Remove default margin */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Ensure the grid items are responsive and cover full width */
+.nutrition-grid, .meals-grid, .recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+}
+
+/* Style for individual cards */
+.nutrition-card{
+  background: linear-gradient(to left,#9df6f6 , #a1e795);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 0;
+  color: #010202;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.recipe-card {
+  background: linear-gradient(to left,#f3d9eb , #eb9af9);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 0;
+  color: #010202;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.meal-card {
+  background: linear-gradient(to left,#ef8d3d , #f5d84a);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  color: #010202;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for cards */
+.nutrition-card:hover, .meal-card:hover, .recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Headings styling */
+.nutrition-info h1, .meals-section h1, .recipes-section h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Text styling inside cards */
+.nutrition-card h2, .meal-card h2, .recipe-card h2 {
+  font-size: 1.5rem;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.nutrition-card p, .meal-card p, .recipe-card p {
+  font-size: 1rem;
+  color: black;
+  font-weight: 900;
+  line-height: 1.6;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+  .nutrition-card h2, .meal-card h2, .recipe-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .nutrition-card p, .meal-card p, .recipe-card p {
+    font-size: 0.9rem;
+  }
+}
+
+.nutrition-card,
+.meal-card,
+.recipe-card {
+  background-color: #010202;
+  background-clip: padding-box; /* Ensure background stays within the border */
+  border: 1px solid transparent; /* Create space for the gradient border */
+  border-image: linear-gradient(45deg, #ff6b6b, #fbc531, #8c7ae6) 1;
+}

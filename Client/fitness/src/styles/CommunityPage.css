@@ -1,0 +1,69 @@
+/* CommunityPage.css */
+
+.community-page {
+    background-color: #010202;
+    color: white;
+    padding: 40px; /* Increased padding for more space around content */
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Increased gap between articles */
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    border-radius: 12px; /* Slightly increased border-radius for a smoother look */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for better depth */
+}
+
+.article:hover {
+    transform: scale(1.03); /* Slightly increased scale for more pronounced effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.article-image {
+    width: 100%;
+    height: 200px; /* Fixed height for consistent image sizing */
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 15px; /* Increased padding for better spacing */
+}
+
+.article-title {
+    font-size: 1.6rem; /* Slightly increased font size */
+    margin: 0 0 10px 0; /* Margin below the title for spacing */
+    color: #F2C22A;
+}
+
+.article-description {
+    font-size: 1.1rem; /* Slightly increased font size */
+    margin: 0; /* No margin */
+    color: #C14D93;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .article-title {
+        font-size: 1.4rem; /* Adjusted font size for medium screens */
+    }
+
+    .article-description {
+        font-size: 1rem; /* Adjusted font size for medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .article-title {
+        font-size: 1.2rem; /* Adjusted font size for small screens */
+    }
+
+    .article-description {
+        font-size: 0.9rem; /* Adjusted font size for small screens */
+    }
+}

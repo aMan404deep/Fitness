@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ExerciseSchema = new mongoose.Schema({
-  name: {
+  Title: {
     type: String,
     required: true
   },
@@ -23,7 +23,7 @@ const ExerciseSchema = new mongoose.Schema({
     enum: ['Beginner', 'Intermediate', 'Advanced'],
     required: true
   },
-  description: {
+  Desc: {
     type: String,
     required: true
   },
