@@ -11,7 +11,7 @@ const app = express();
 const cors = require('cors');
 
 // Use CORS middleware
-app.use(cors({ origin: '*' }));
+app.use(cors());
 
 dbConnect();
 
