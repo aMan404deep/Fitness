@@ -148,8 +148,8 @@ const Exercise = () => {
             )}
             {workoutPlan && workoutPlan.exercises.length > 0 && (
               <div className='exercises-table'>
-                <h2>Exercises</h2>
-                <table className='exercises-table'>
+                {/* <h2>Exercises</h2> */}
+                <table className='exercises-tables'>
                   <thead>
                     <tr>
                       <th>Title</th>

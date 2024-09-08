@@ -1,0 +1,110 @@
+.food-container{
+    padding-top: 80px;
+    height: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    /* background-color: red; */
+}
+.food-main{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    /* background-color: blue; */
+    overflow: hidden;
+}
+.food-info{
+    width: 100%;
+    /* background-color: antiquewhite; */
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    width: 100%;
+    margin: 0;
+    padding:0;
+}
+.food-info div{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 0;
+    padding:0;
+    /* justify-content: center; */
+    padding: 2vw;
+    width: 100%;
+    height: 100%;
+    gap: 2rem;
+    border-radius: 5%;
+    transition: all 1s;
+}
+.food-info div:hover{
+    transform: scale(.95);
+}
+.brkfst-info{
+    background-color: #85f56f;
+}
+.lunch-info{
+    background-color: rgb(189, 189, 189);
+}
+.dinner-info{
+    background-color: rgb(146, 99, 194);
+}
+.food-info div h4{
+    font-size: 3vw;
+    /* text-align: center; */
+    padding-block: 1rem;
+}
+.food-info div p{
+    font-weight: 500;
+    font-size: 1.2vw;
+}
+.macros-info{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1vw;
+}
+.macros-info div{
+    /* background-color: cadetblue; */
+    width: 25%;
+    border-radius: 5%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 2vw;
+    gap: 1vw;
+    transition: all 1s;
+}
+.macros-info div:hover{
+    transform: scale(.95);
+}
+.macros-info div h4{
+    font-size: 3vw;
+}
+.macros-info div p{
+    font-size: 2vw;
+}
+.protien{
+    background-color: #C7D4FF;
+}
+.fat{
+    background-color: #fd7979;
+}
+.calories{
+    background-color: #ffbe5d;
+}
+.carbs{
+    background-color: #ff80b5;
+}
+

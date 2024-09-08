@@ -8,7 +8,9 @@ const FitnessForm = () => {
   const [formData, setFormData] = useState({
     age: '',
     gender: '',
-    height: '',
+    heightCm: '',
+    heightFt: '',
+    heightIn: '',
     weight: '',
     Level: '',
     goals: '',
@@ -18,10 +20,12 @@ const FitnessForm = () => {
     workoutFrequencyPerWeek: ''
   });
   const [error, setError] = useState('');
+  const [heightUnit, setHeightUnit] = useState('cm'); // New state for height unit
 
   // Retrieve userId from localStorage
   const userId = localStorage.getItem('userId');
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -31,11 +35,15 @@ const FitnessForm = () => {
   };
 
   const handleNextStep = () => {
-    if (step === 1 && formData.age && formData.gender && formData.height && formData.weight) {
+    if (step === 1 && formData.age && formData.gender && 
+        ((heightUnit === 'cm' && formData.heightCm) || 
+        (heightUnit === 'ft/in' && formData.heightFt && formData.heightIn)) && 
+        formData.weight) {
       setStep(2);
     } else if (step === 2 && formData.Level && formData.goals) {
       setStep(3);
-    } else if (step === 3 && formData.Equipment && formData.workoutPreference && formData.timePerWorkout && formData.workoutFrequencyPerWeek) {
+    } else if (step === 3 && formData.Equipment && formData.workoutPreference && 
+               formData.timePerWorkout && formData.workoutFrequencyPerWeek) {
       // Submit the form data
       handleSubmit();
     }
@@ -43,12 +51,14 @@ const FitnessForm = () => {
 
   const handleSubmit = async () => {
     try {
-      // Make the API call to update user data
-      console.log(formData)
-      const response = await axios.post(`http://localhost:5000/api/users/${userId}`, formData);
+      // Prepare height data based on selected unit
+      const height = heightUnit === 'cm' ? formData.heightCm : 
+                     ((parseInt(formData.heightFt) * 12 + parseInt(formData.heightIn))*2.54).toFixed(2);
+      const dataToSubmit = { ...formData, height }; // Include height in the form data
+
+      const response = await axios.post(`http://localhost:5000/api/users/${userId}`, dataToSubmit);
 
       if (response.status === 200) {
-        // Handle success, e.g., navigate or show a success message
         console.log('Form data successfully submitted:', response.data);
         navigate('/homepage');
       }
@@ -93,15 +103,47 @@ const FitnessForm = () => {
             </select>
           </div>
           <div className="form-group">
-            <label>Height (cm):</label>
-            <input
-              type="number"
-              name="height"
-              value={formData.height}
-              onChange={handleChange}
-              required
-            />
+            <label>Height:</label>
+            <select value={heightUnit} onChange={(e) => setHeightUnit(e.target.value)}>
+              <option value="cm">Centimeters</option>
+              <option value="ft/in">Feet and Inches</option>
+            </select>
           </div>
+          {heightUnit === 'cm' ? (
+            <div className="form-group">
+              <label>Height (cm):</label>
+              <input
+                type="number"
+                name="heightCm"
+                value={formData.heightCm}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          ) : (
+            <>
+              <div className="form-group">
+                <label>Height (Feet):</label>
+                <input
+                  type="number"
+                  name="heightFt"
+                  value={formData.heightFt}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Height (Inches):</label>
+                <input
+                  type="number"
+                  name="heightIn"
+                  value={formData.heightIn}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </>
+          )}
           <div className="form-group">
             <label>Weight (kg):</label>
             <input

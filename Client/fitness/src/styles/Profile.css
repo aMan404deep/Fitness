@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+.profile-container{
+    height: 900px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+.profile-main{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.details{
+    width: 100%;
+    border-radius: .5rem;
+}
+.profile-detail-one{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 30%;
+}
+.personal-details{
+    height: 100%;
+    padding: 2rem;
+    width: 55%;
+    border-radius: 1rem;
+    background-color: #FFC7E9;
+}
+.body-details{
+    padding: 2rem;
+    height: 100%;
+    width: 45%;
+    border-radius: 1rem;
+    background-color: #EFCBFF;
+}
+
+.personal-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 2rem;
+}
+.personal-content h4{
+    display: inline;
+}
+.email-gender{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.email-gender p{
+    font-weight: 500;
+    font-size: 2vw;
+}
+
+.body-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 2rem;
+}
+.profile-detail-two{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 40%;
+    width: 100%;
+}
+.nutrition-design{
+    position: absolute;
+    width:15vw;
+    background-color: black;
+    border-radius: 0%  0% 0% 500%;
+    height: 100%;
+    top: 0%;
+    left: 62%;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.exercise-design{
+    position: absolute;
+    width:15vw;
+    background-color: black;
+    border-radius: 0%  0% 0% 500%;
+    height: 100%;
+    top: 0%;
+    left: 69%;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.nutrition-design h4{
+    color: #F6FFA2;
+    text-transform: uppercase;
+    font-size: 1vw;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
+    margin: 0%;
+    padding: 0%;
+    padding-top: .15vw;
+    transition: all 1s ease-in-out;
+    font-family: "Ubuntu", system-ui;
+}
+.exercise-design h4{
+    color: #F6FFA2;
+    text-transform: uppercase;
+    font-size: 1vw;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
+    margin: 0%;
+    padding: 0%;
+    padding-top: .15vw;
+    transition: all 1s ease-in-out;
+    font-family: "Ubuntu", system-ui;
+}
+
+.nutrition-details{
+    z-index: 999;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 45%;
+    background-color: #F6FFA2;
+    padding: 2rem;
+    border-radius: 1rem;
+    gap: 2rem;
+}
+.exercise-details{
+    z-index: 999;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 45%;
+    background-color: #F6FFA2;
+    padding: 2rem;
+    border-radius: 1rem;
+    gap: 2rem;
+}
+.nutrition-details:hover .nutrition-design{
+    border-radius: 1rem;
+    opacity: .8;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid #F6FFA2;
+}
+.exercise-details:hover .exercise-design{
+    border-radius: 1rem;
+    opacity: .8;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid #C7D4FF;
+}
+
+.nutrition-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.exercise-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.exercise-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    width: 55%;
+    background-color:#C7D4FF ;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.custom-cursor {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3); 
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: .7vw;
+    pointer-events: none;
+    z-index: 1000;
+    text-align: center;
+    transition: transform 0.1s ease;
+  }
+  .show-cursor {
+    display: flex;
+    }
+  
+  .cursor-hover {
+    background: rgba(0, 0, 0, 0.5); 
+    color: white;
+    transform: scale(2);
+  }
+  
+  .nutritionImg{
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    right: -0%;
+    width: 15vw;
+  }
+  .exerciseImg{
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    right: 0%;
+    width: 35vw;
+  }
+  .profile-detail-three{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 10%;
+    width: 100%;
+}
+.community-details{
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    border-radius: 1rem;
+    background-color: #c7ffcc;
+    cursor: pointer;
+}
+.about-details{
+    padding: 2rem;
+    height: 100%;
+    width: 45%;
+    border-radius: 1rem;
+    background-color: #ffdecb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.height-feet-cm{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1vw;
+    justify-content: center;
+    align-items: center;
+}
+.height-feet-cm select {
+    background-color: #FFC7E9; /* Dark background */
+    color: #2c2c2e; /* White text for contrast */
+    border: 2px solid #fca1d7; /* Vibrant orange border */
+    padding: .7vw; /* Some padding for better spacing */
+    border-radius: 2vw; /* Slightly rounded corners */
+    font-size: 16px; /* Standard font size */
+    appearance: none; /* Remove default browser styling */
+    outline: none; /* Remove default outline */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: border 0.3s ease, background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.height-feet-cm select:hover {
+    background-color: #fca1d7; 
+    border-color: #FFC7E9;
+    color: white; 
+}
+
+.height-feet-cm select:focus {
+    border-color: #f837ab; /* Focus border color */
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); /* Glowing effect on focus */
+}

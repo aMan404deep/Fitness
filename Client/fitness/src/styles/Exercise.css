@@ -32,14 +32,14 @@
 .exercise-top-header, .exercise-bottom-header {
   padding-bottom: 10px;
   margin-bottom: 10px;
-  color: black;
+  color: rgb(27, 205, 184);
   text-align: start;
 }
 
 .exercise-top-header h1, .exercise-bottom-header h1 {
   margin: 0;
   font-size: 1.5rem;
-  color: #cacaca;
+  color: #3dcce9;
   display: block;
   font-weight: bold;
 }
@@ -112,7 +112,11 @@
   height: 100vh;
   width: 100%;
 }
-
+.exercise-bottom-content{
+  display: flex;
+  gap: 1vw;
+  width: 100%;
+}
 .workout-plan-table, .exercises-table {
   width: 100%;
   border-collapse: collapse;
@@ -137,4 +141,7 @@
   background-color: #f4f4f4;
   color: black;
   text-shadow: palevioletred;
+}
+.exercises-tables{
+  height: 100%;
 }

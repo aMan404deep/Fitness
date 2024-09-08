@@ -14,10 +14,10 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Loader from './components/Loader';
 import FitnessForm from './components/FitnessForm';
-import HomePage from './components/HomePage';
-import Nutrition from './components/Nutrition';
 import Exercise from './components/Exercise';
 import CommunityPage from './components/CommunityPage';
+import Profile from './components/Profile';
+import Food from './components/Food';
 
 const App = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
@@ -74,8 +74,8 @@ const App = () => {
           <>
             <Routes>
               {/* Routes that use Navbar2 */}
-              <Route path="/homepage" element={<><Navbar2 /><HomePage /></>} />
-              <Route path="/nutrition" element={<><Navbar2 /><Nutrition /></>} />
+              <Route path="/homepage" element={<><Navbar2 /><Profile /></>} />
+              <Route path="/nutrition" element={<><Navbar2 /><Food /></>} />
               <Route path="/exercise" element={<><Navbar2 /><Exercise /></>} />
               <Route path="/community" element={<><Navbar2 /><CommunityPage /></>} />
 
