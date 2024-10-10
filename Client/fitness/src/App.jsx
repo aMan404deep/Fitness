@@ -89,7 +89,7 @@ const App = () => {
                     <div ref={servicesRef}><Services /></div>
                     <div ref={plansRef}><Plans /></div>
                     <div ref={faqRef}><FAQ /></div>
-                    <div ref={contactRef}><Banner /></div>
+                    <div ref={contactRef}><Banner /></div> ``
                     <Footer />
                   </>
                 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const dbConnect = require('./middlewares/Db'); 
-
+const path = require('path');
 const userController = require('./controllers/userController');
 const exerciseController = require('./controllers/exerciseController');
 const workoutPlanController = require('./controllers/workoutPlanController');
@@ -57,3 +57,13 @@ app.post('/api/progress-tracking/:id', progressTrackingController.deleteProgress
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+// Serve static files from the frontend build directory if in production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../Client/fitness/build')));
+  
+    // Serve the index.html file from the build folder on any other route
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../Client/fitness/build', 'index.html'));
+    });
+  }
