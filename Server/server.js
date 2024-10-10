@@ -55,15 +55,15 @@ app.get('/api/progress-tracking/:id', progressTrackingController.getProgressTrac
 app.post('/api/progress-tracking/:id', progressTrackingController.updateProgressTracking);
 app.post('/api/progress-tracking/:id', progressTrackingController.deleteProgressTracking);
 
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
 // Serve static files from the frontend build directory if in production
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../Client/fitness/build')));
-  
-    // Serve the index.html file from the build folder on any other route
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../Client/fitness/build', 'index.html'));
-    });
-  }
+  app.use(express.static(path.join(__dirname, '../Client/fitness/build')));
+
+  // Serve the index.html file from the build folder on any other route
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Client/fitness/build', 'index.html'));
+  });
+}
+
+const PORT = 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
