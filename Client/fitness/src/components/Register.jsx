@@ -19,7 +19,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users', {
+      const response = await axios.post('https://shred.onrender.com/api/users', {
         name,
         email,
         password

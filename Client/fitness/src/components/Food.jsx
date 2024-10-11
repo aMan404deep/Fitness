@@ -24,7 +24,7 @@ const Food = () => {
         const fetchNutritionData = async () => {
           try {
             const userId = localStorage.getItem('userId'); // Get the user ID from local storage
-            const response = await axios.get(`http://localhost:5000/api/users/${userId}/nutrition`);
+            const response = await axios.get(`https://shred.onrender.com/api/users/${userId}/nutrition`);
             console.log('Data received:', response.data); // Log the received data
             setNutritionData(response.data); // Save the data in state
             setLoading(false); // Set loading to false after data is fetched

@@ -14,7 +14,7 @@ const Login = () => {
 
     try {
       // Make the API call
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post('https://shred.onrender.com/api/login', {
         email,
         password
       });

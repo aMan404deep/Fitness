@@ -56,7 +56,7 @@ const FitnessForm = () => {
                      ((parseInt(formData.heightFt) * 12 + parseInt(formData.heightIn))*2.54).toFixed(2);
       const dataToSubmit = { ...formData, height }; // Include height in the form data
 
-      const response = await axios.post(`http://localhost:5000/api/users/${userId}`, dataToSubmit);
+      const response = await axios.post(`https://shred.onrender.com/api/users/${userId}`, dataToSubmit);
 
       if (response.status === 200) {
         console.log('Form data successfully submitted:', response.data);
