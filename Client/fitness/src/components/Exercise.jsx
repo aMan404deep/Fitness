@@ -178,8 +178,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Exercise.css';
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
+// import { useGSAP } from '@gsap/react';
+// import { gsap } from 'gsap';
 
 const Exercise = () => {
   const [activeExercise, setActiveExercise] = useState(null);
@@ -194,38 +194,38 @@ const Exercise = () => {
 
   const userId = localStorage.getItem('userId'); // Retrieve userId from localStorage
 
-  useGSAP(() => {
-    const tl = gsap.timeline();
+  // useGSAP(() => {
+  //   const tl = gsap.timeline();
 
-    tl.from(headerRef.current, {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
+  //   tl.from(headerRef.current, {
+  //     x: -100,
+  //     opacity: 0,
+  //     duration: 1,
+  //     ease: "power3.out",
+  //   });
 
-    tl.from(exercisesContainerRef.current.children, {
-      scale: 0.9,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power3.out",
-    }, '-=0.4');
+  //   tl.from(exercisesContainerRef.current.children, {
+  //     scale: 0.9,
+  //     opacity: 0,
+  //     duration: 0.6,
+  //     stagger: 0.1,
+  //     ease: "power3.out",
+  //   }, '-=0.4');
 
-    tl.from(workoutHeaderRef.current, {
-      x: 100,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    }, '-=0.8');
+  //   tl.from(workoutHeaderRef.current, {
+  //     x: 100,
+  //     opacity: 0,
+  //     duration: 1,
+  //     ease: "power3.out",
+  //   }, '-=0.8');
 
-    tl.from(workoutContentRef.current, {
-      y: 20,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    }, '-=0.6');
-  }, [exercises, workoutPlan]);
+  //   tl.from(workoutContentRef.current, {
+  //     y: 20,
+  //     opacity: 0,
+  //     duration: 0.8,
+  //     ease: "power3.out",
+  //   }, '-=0.6');
+  // }, [exercises, workoutPlan]);
 
   useEffect(() => {
     // Fetch user's exercises
