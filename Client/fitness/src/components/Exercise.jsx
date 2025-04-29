@@ -176,7 +176,6 @@
 
 // export default Exercise;
 
-
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Exercise.css';
 import { useGSAP } from '@gsap/react';
@@ -199,9 +198,9 @@ const Exercise = () => {
     const tl = gsap.timeline();
 
     tl.from(headerRef.current, {
-      y: -50,
+      x: -100,
       opacity: 0,
-      duration: 0.8,
+      duration: 1,
       ease: "power3.out",
     });
 
@@ -214,18 +213,18 @@ const Exercise = () => {
     }, '-=0.4');
 
     tl.from(workoutHeaderRef.current, {
-      y: 30,
+      x: 100,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    }, '-=0.8');
+
+    tl.from(workoutContentRef.current, {
+      y: 20,
       opacity: 0,
       duration: 0.8,
       ease: "power3.out",
     }, '-=0.6');
-
-    tl.from(workoutContentRef.current, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    }, '-=0.4');
   }, [exercises, workoutPlan]);
 
   useEffect(() => {
@@ -386,11 +385,14 @@ const Exercise = () => {
                     </table>
                   </div>
                 )}
+                <div className="action-container">
+                  <button className="shredBtn">StartShredding</button>
+                </div>
               </div>
             ) : (
               <div className="no-plan">
                 <h3>No workout plan found.</h3>
-                <button className="actionBtn">Create Plan</button>
+                <button className="shredBtn">Create Plan</button>
               </div>
             )}
           </div>
