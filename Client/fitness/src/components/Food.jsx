@@ -95,187 +95,191 @@
 // }
 
 // export default Food
-
-
-
 import React, { useState, useEffect } from 'react';
 import '../styles/Food.css';
 
 const Food = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [mealPlan, setMealPlan] = useState(null);
-  const [activeRecipe, setActiveRecipe] = useState(null);
+  const [nutritionData, setNutritionData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [activeSection, setActiveSection] = useState(null);
   
-  const userId = localStorage.getItem('userId'); // Retrieve userId from localStorage
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    // Fetch user's recipes
-    const fetchRecipes = async () => {
-      try {
-        const response = await fetch(`/api/users/${userId}/recipes`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch recipes');
-        }
-        const data = await response.json();
-        setRecipes(data.slice(0, 9)); // Limit to a maximum of 9 recipes
-      } catch (error) {
-        console.error('Error fetching recipes:', error);
-      }
+    // Sample mock nutrition data for fallback
+    const mockNutritionData = {
+      breakfast: 'Greek Yogurt Parfait',
+      lunch: 'Grilled Chicken Salad',
+      dinner: 'Baked Salmon with Vegetables',
+      breakfast_recipe: 'Mix Greek yogurt with honey, add granola and fresh berries on top.',
+      lunch_recipe: 'Grill chicken breast, slice and add to mixed greens with cherry tomatoes, cucumber, and balsamic vinaigrette.',
+      dinner_recipe: 'Season salmon fillet with herbs, bake. Serve with roasted broccoli and sweet potatoes.',
+      calories: '2100',
+      protein: '150',
+      fat: '70',
+      carbs: '180'
     };
 
-    // Fetch meal plan ID and details
-    const fetchMealPlanId = async () => {
+    // Fetch nutrition data from API
+    const fetchNutritionData = async () => {
       try {
-        const response = await fetch(`/api/meal-plans`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ userId }), // Send the userId in the request body
-        });
-    
-        if (!response.ok) {
-          throw new Error('Failed to fetch meal plans');
-        }
-    
-        const mealPlan = await response.json();
-        console.log('Meal Plan Response:', mealPlan); // Log the full response
-    
-        // Check if the returned meal plan belongs to the current user
-        if (mealPlan.user === userId) {
-          return mealPlan._id; // Return the mealPlanId directly
+        setLoading(true);
+        
+        // Check if we should use the API or mock data
+        const useApi = true; // Set to false to use mock data
+        
+        if (useApi && userId) {
+          const response = await fetch(`https://shred.onrender.com/api/users/${userId}/nutrition`);
+          
+          if (!response.ok) {
+            throw new Error('Failed to fetch nutrition data');
+          }
+          
+          const data = await response.json();
+          console.log('Data received:', data);
+          
+          // If data is returned as an array, use the first item
+          if (Array.isArray(data) && data.length > 0) {
+            setNutritionData(data[0]);
+          } else {
+            setNutritionData(data);
+          }
         } else {
-          console.error('The meal plan does not belong to the current user.');
-          return null;
+          // Use mock data
+          console.log('Using mock nutrition data');
+          setNutritionData(mockNutritionData);
         }
-      } catch (error) {
-        console.error('Error fetching meal plans:', error);
-        return null; // Return null in case of an error
-      }
-    };
-    
-    // Fetch the meal plan details using the meal plan ID
-    const fetchMealPlan = async (mealPlanId) => {
-      try {
-        const response = await fetch(`/api/meal-plans/${mealPlanId}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch meal plan');
-        }
-        const data = await response.json();
-        setMealPlan({
-          totalCalories: data.totalCalories,
-          totalMeals: data.totalMeals,
-          mealsPerDay: data.mealsPerDay,
-          durationDays: data.durationDays,
-          recipes: data.recipes.map(recipe => ({
-            name: recipe.name,
-            description: recipe.description,
-            calories: recipe.calories
-          }))
-        });
-      } catch (error) {
-        console.error('Error fetching meal plan:', error);
+      } catch (err) {
+        console.error('Error fetching nutrition data:', err);
+        setError('Failed to fetch nutritional data. Using sample data instead.');
+        // Fall back to mock data
+        setNutritionData(mockNutritionData);
+      } finally {
+        setLoading(false);
       }
     };
 
-    // Sequence: Fetch recipes first, then fetch meal plan
-    fetchRecipes(); // Fetch the recipes using userId
-    fetchMealPlanId().then(mealPlanId => {
-      if (mealPlanId) {
-        fetchMealPlan(mealPlanId); // Fetch the meal plan details using the retrieved mealPlanId
-      }
-    });
+    fetchNutritionData();
   }, [userId]);
 
-  const handleClick = (recipeId) => {
-    setActiveRecipe((prev) => (prev === recipeId ? null : recipeId));
+  const handleSectionClick = (section) => {
+    setActiveSection(prev => prev === section ? null : section);
   };
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className='food-container'>
+        <div className='food-main'>
+          <div className='food-loading'>
+            <h2>ShredWithStyle</h2>
+            <h3>Loading your nutrition plan...</h3>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='food-container'>
       <div className='food-main'>
+        {/* Top Section - Meal Information */}
         <div className='food-top'>
           <div className='food-top-header'>
             <h2>ShredWithStyle</h2>
-            <h1>Recipes</h1>
+            <h1>Daily Meals</h1>
             <h4>#EatCleanShredLean</h4>
           </div>
           <div className='food-top-content'>
-            {recipes.map((recipe) => (
-              <div
-                key={recipe._id}
-                className={`food-dropdown ${activeRecipe === recipe._id ? 'active' : ''}`}
-                onClick={() => handleClick(recipe._id)}
-              >
-                <button className='food-dropdown-button'>
-                  {recipe.name}
-                </button>
-                {activeRecipe === recipe._id && (
-                  <div className='food-dropdown-content'>
-                    <p className="recipe-name">{recipe.name}</p>
-                    <p className="recipe-desc">{recipe.description}</p>
-                    <p className="recipe-calories">{recipe.calories} calories</p>
-                  </div>
-                )}
-              </div>
-            ))}
+            {/* Breakfast Section */}
+            <div
+              className={`food-dropdown ${activeSection === 'breakfast' ? 'active' : ''}`}
+              onClick={() => handleSectionClick('breakfast')}
+            >
+              <button className='food-dropdown-button'>
+                Breakfast
+              </button>
+              {activeSection === 'breakfast' && (
+                <div className='food-dropdown-content'>
+                  <p className="recipe-name">{nutritionData?.breakfast || 'No breakfast data'}</p>
+                  <p className="recipe-desc">{nutritionData?.breakfast_recipe || 'No recipe available'}</p>
+                </div>
+              )}
+            </div>
+            
+            {/* Lunch Section */}
+            <div
+              className={`food-dropdown ${activeSection === 'lunch' ? 'active' : ''}`}
+              onClick={() => handleSectionClick('lunch')}
+            >
+              <button className='food-dropdown-button'>
+                Lunch
+              </button>
+              {activeSection === 'lunch' && (
+                <div className='food-dropdown-content'>
+                  <p className="recipe-name">{nutritionData?.lunch || 'No lunch data'}</p>
+                  <p className="recipe-desc">{nutritionData?.lunch_recipe || 'No recipe available'}</p>
+                </div>
+              )}
+            </div>
+            
+            {/* Dinner Section */}
+            <div
+              className={`food-dropdown ${activeSection === 'dinner' ? 'active' : ''}`}
+              onClick={() => handleSectionClick('dinner')}
+            >
+              <button className='food-dropdown-button'>
+                Dinner
+              </button>
+              {activeSection === 'dinner' && (
+                <div className='food-dropdown-content'>
+                  <p className="recipe-name">{nutritionData?.dinner || 'No dinner data'}</p>
+                  <p className="recipe-desc">{nutritionData?.dinner_recipe || 'No recipe available'}</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
+        
+        {/* Bottom Section - Macros */}
         <div className='food-bottom'>
           <div className='food-bottom-header'>
             <h2>ShredYourGoals</h2>
-            <h1>Meal Plan</h1>
+            <h1>Daily Macros</h1>
             <h4>#NutritionForOptimalPerformance</h4>
           </div>
           <div className='food-bottom-content'>
-            {mealPlan ? (
-              <div className="meal-details">
-                <div className="meal-stats">
-                  <div className="stat-box">
-                    <h3>{mealPlan.totalCalories}</h3>
-                    <p>Calories</p>
-                  </div>
-                  <div className="stat-box">
-                    <h3>{mealPlan.totalMeals}</h3>
-                    <p>Total Meals</p>
-                  </div>
-                  <div className="stat-box">
-                    <h3>{mealPlan.mealsPerDay}</h3>
-                    <p>Per Day</p>
-                  </div>
-                  <div className="stat-box">
-                    <h3>{mealPlan.durationDays}</h3>
-                    <p>Days</p>
-                  </div>
+            <div className="meal-details">
+              <div className="meal-stats">
+                <div className="stat-box">
+                  <h3>{nutritionData?.calories || '0'}</h3>
+                  <p>Calories</p>
                 </div>
-                {mealPlan.recipes.length > 0 && (
-                  <div className='recipes-table-container'>
-                    <table className='recipes-table'>
-                      <thead>
-                        <tr>
-                          <th>Recipe</th>
-                          <th>Description</th>
-                          <th>Calories</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {mealPlan.recipes.map((recipe, index) => (
-                          <tr key={index}>
-                            <td>{recipe.name}</td>
-                            <td>{recipe.description}</td>
-                            <td>{recipe.calories}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                <div className="stat-box">
+                  <h3>{nutritionData?.protein || '0'}</h3>
+                  <p>Protein (g)</p>
+                </div>
+                <div className="stat-box">
+                  <h3>{nutritionData?.fat || '0'}</h3>
+                  <p>Fat (g)</p>
+                </div>
+                <div className="stat-box">
+                  <h3>{nutritionData?.carbs || '0'}</h3>
+                  <p>Carbs (g)</p>
+                </div>
               </div>
-            ) : (
-              <div className="no-plan">
-                <h3>No meal plan found.</h3>
+              
+              {error && (
+                <div className="error-message">
+                  <p>{error}</p>
+                </div>
+              )}
+              
+              <div className="action-container">
+                <button className="shredBtn">Update Nutrition Plan</button>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
