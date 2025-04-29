@@ -187,10 +187,10 @@ const Exercise = () => {
   const [workoutPlan, setWorkoutPlan] = useState(null);
 
   // Refs for GSAP animations
-  const headerRef = useRef(null);
-  const exercisesContainerRef = useRef(null);
-  const workoutHeaderRef = useRef(null);
-  const workoutContentRef = useRef(null);
+  // const headerRef = useRef(null);
+  // const exercisesContainerRef = useRef(null);
+  // const workoutHeaderRef = useRef(null);
+  // const workoutContentRef = useRef(null);
 
   const userId = localStorage.getItem('userId'); // Retrieve userId from localStorage
 
@@ -313,12 +313,12 @@ const Exercise = () => {
     <div className='exercise-container'>
       <div className='exercise-main'>
         <div className='exercise-top'>
-          <div className='exercise-top-header' ref={headerRef}>
+          <div className='exercise-top-header'>
             <h2>ShredWithStyle</h2>
             <h1>Exercises</h1>
             <h4>#MasterYourWorkout</h4>
           </div>
-          <div className='exercise-top-content' ref={exercisesContainerRef}>
+          <div className='exercise-top-content' >
             {exercises.map((exercise) => (
               <div
                 key={exercise._id}
@@ -339,12 +339,12 @@ const Exercise = () => {
           </div>
         </div>
         <div className='exercise-bottom'>
-          <div className='exercise-bottom-header' ref={workoutHeaderRef}>
+          <div className='exercise-bottom-header'>
             <h2>ShredYourGoals</h2>
             <h1>Workout Plan</h1>
             <h4>#JourneyTowardsAHealthierYou</h4>
           </div>
-          <div className='exercise-bottom-content' ref={workoutContentRef}>
+          <div className='exercise-bottom-content'>
             {workoutPlan ? (
               <div className="workout-details">
                 <div className="workout-stats">
@@ -385,14 +385,14 @@ const Exercise = () => {
                     </table>
                   </div>
                 )}
-                <div className="action-container">
+{/*                 <div className="action-container">
                   <button className="shredBtn">StartShredding</button>
-                </div>
+                </div> */}
               </div>
             ) : (
               <div className="no-plan">
                 <h3>No workout plan found.</h3>
-                <button className="shredBtn">Create Plan</button>
+{/*                 <button className="shredBtn">Create Plan</button> */}
               </div>
             )}
           </div>
