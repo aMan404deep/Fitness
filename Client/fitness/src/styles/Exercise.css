@@ -149,46 +149,43 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  background-color: #000000;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
 }
 
 .exercise-main {
-  width: 90%;
+  width: 85%;
   max-width: 1200px;
   margin: 2rem auto;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
 }
 
 /* Header Styles - Matching Hero component */
 .exercise-top-header, .exercise-bottom-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .exercise-top-header h2, .exercise-bottom-header h2 {
   font-size: 1.5rem;
-  color: #4cc9f0;
+  color: #ffffff;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
 
 .exercise-top-header h1, .exercise-bottom-header h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #4cc9f0, #f72585);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffffff;
   letter-spacing: -1px;
 }
 
 .exercise-top-header h4, .exercise-bottom-header h4 {
-  color: #b5b5b5;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 1px;
@@ -205,21 +202,20 @@
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
 }
 
 .exercise-dropdown:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(134, 70, 213, 0.3);
+  border-color: #8646D5;
 }
 
 .exercise-dropdown-button {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(45deg, #4361ee, #4cc9f0);
+  background-color: #1a1a1a;
   color: white;
   border: none;
   font-size: 1.1rem;
@@ -230,6 +226,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.exercise-dropdown.active .exercise-dropdown-button {
+  background-color: #8646D5;
 }
 
 .exercise-dropdown-button:after {
@@ -244,14 +244,14 @@
 
 .exercise-dropdown-content {
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #1a1a1a;
+  border-top: 1px solid #333333;
 }
 
 .exercise-dropdown-content .exercise-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #4cc9f0;
+  color: #8646D5;
   margin-bottom: 0.8rem;
 }
 
@@ -276,29 +276,29 @@
 }
 
 .stat-box {
-  background: rgba(255, 255, 255, 0.05);
+  background-color: #1a1a1a;
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #333333;
   transition: all 0.3s ease;
 }
 
 .stat-box:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: #8646D5;
+  box-shadow: 0 8px 20px rgba(134, 70, 213, 0.2);
 }
 
 .stat-box h3 {
   font-size: 2rem;
-  color: #f72585;
+  color: #FFAE33;
   margin-bottom: 0.5rem;
   font-weight: 700;
 }
 
 .stat-box p {
-  color: #b5b5b5;
+  color: #e0e0e0;
   font-size: 0.9rem;
   font-weight: 400;
 }
@@ -309,8 +309,8 @@
   overflow-x: auto;
   margin-top: 1rem;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
 }
 
 .exercises-table {
@@ -322,19 +322,19 @@
 .exercises-table td {
   padding: 1rem 1.5rem;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #333333;
 }
 
 .exercises-table th {
-  background: rgba(76, 201, 240, 0.1);
-  color: #4cc9f0;
+  background-color: #1a1a1a;
+  color: #8646D5;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 1px;
 }
 
 .exercises-table tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background-color: #222222;
 }
 
 .exercises-table tr:last-child td {
@@ -342,22 +342,22 @@
 }
 
 /* Button Styles - Matching Hero component */
-.actionBtn {
-  background: linear-gradient(45deg, #4361ee, #4cc9f0);
+.shredBtn {
+  background-color: #8646D5;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 50px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+  box-shadow: 0 4px 15px rgba(134, 70, 213, 0.3);
 }
 
-.actionBtn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(76, 201, 240, 0.4);
+.shredBtn:hover {
+  background-color: #9e5de8;
+  box-shadow: 0 6px 20px rgba(134, 70, 213, 0.5);
 }
 
 .no-plan {
@@ -369,9 +369,15 @@
 }
 
 .no-plan h3 {
-  color: #b5b5b5;
+  color: #e0e0e0;
   font-size: 1.2rem;
   font-weight: 400;
+}
+
+.action-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 /* Responsive Adjustments */
