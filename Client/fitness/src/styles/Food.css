@@ -123,7 +123,31 @@
   width: 100%;
 }
 
-/* Top Section - Recipes */
+/* Loading State */
+.food-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  text-align: center;
+  background-color: rgba(50, 0, 80, 0.8);
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.food-loading h2 {
+  color: #b080ff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.food-loading h3 {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+/* Top Section - Daily Meals */
 .food-top {
   background-color: rgba(50, 0, 80, 0.8);
   border-radius: 10px;
@@ -216,13 +240,7 @@
   color: #e0e0e0;
 }
 
-.recipe-calories {
-  font-size: 0.9rem;
-  color: #b080ff;
-  font-weight: bold;
-}
-
-/* Bottom Section - Meal Plan */
+/* Bottom Section - Macros */
 .food-bottom {
   background-color: rgba(50, 0, 80, 0.8);
   border-radius: 10px;
@@ -296,54 +314,40 @@
   color: #b080ff;
 }
 
-.recipes-table-container {
-  overflow-x: auto;
-  margin-top: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.recipes-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.recipes-table th,
-.recipes-table td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid rgba(157, 82, 222, 0.3);
-}
-
-.recipes-table th {
-  background-color: rgba(83, 16, 149, 0.8);
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
-
-.recipes-table tr:nth-child(odd) {
-  background-color: rgba(28, 5, 51, 0.8);
-}
-
-.recipes-table tr:nth-child(even) {
-  background-color: rgba(40, 8, 72, 0.8);
-}
-
-.recipes-table tr:hover {
-  background-color: rgba(83, 16, 149, 0.5);
-}
-
-.no-plan {
+.error-message {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: rgba(83, 16, 149, 0.8);
+  border-radius: 5px;
+  color: #ff9999;
 }
 
-.no-plan h3 {
-  font-size: 1.5rem;
-  color: #b080ff;
-  margin-bottom: 1.5rem;
+.action-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.shredBtn {
+  background: linear-gradient(135deg, #9d52de, #531095);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(157, 82, 222, 0.4);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.shredBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(157, 82, 222, 0.6);
+  background: linear-gradient(135deg, #b080ff, #9d52de);
 }
 
 /* Responsive Adjustments */
