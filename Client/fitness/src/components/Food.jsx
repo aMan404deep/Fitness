@@ -275,10 +275,7 @@ const Food = () => {
                   <p>{error}</p>
                 </div>
               )}
-              
-              <div className="action-container">
-                <button className="shredBtn">Update Nutrition Plan</button>
-              </div>
+                
             </div>
           </div>
         </div>
